@@ -7,10 +7,7 @@ const saveInd = document.getElementById("saveIndex"); //get saveIndex id from ht
 
 let todoAppArray = []; //initialize empty array
 
-
-showTask();//call display function which will keep our data cached using localstorage
-
-
+showTask();//call showTask function which will keep our data cached using localstorage
 addTaskButton.addEventListener("click", (e) => {  //using ES6 arrow function
 	
 e.preventDefault(); //prevent page from loading	
@@ -18,7 +15,6 @@ e.preventDefault(); //prevent page from loading
 	addtaskinputval = text.value;
 	
 	if(addtaskinputval.trim() !=0) {
-	
 	let mytodo = localStorage.getItem("mytodo"); //store to do array to localstorage on every change
 	
 	
@@ -54,17 +50,11 @@ function showTask() {
 		todoAppArray = JSON.parse(mytodo); 
 	}
 	
-	
-	
 	let html = "";
 	todoAppArray.forEach((list, index) => {
 	
-	
-	
-		 html += `<tr>
-		 
+		 html += `<tr>	 
 		<td><p> ${list} </p> </td>
-		
    <td><button onclick='editTodo(${index})' class='btn btn-primary'>Edit Task</button> </td>
    <td><button onclick='deletemyTodo(${index})' class='btn btn-danger'>Delete</button> </td>
    </tr>`;
@@ -101,11 +91,8 @@ function editTodo(index) {
 
 saveTaskButton.addEventListener("click", () => {
  
-
- 
  let mytodo = localStorage.getItem("mytodo"); //store to do array to localstorage on every change
  
-
 todoAppArray = JSON.parse(mytodo);
 
  let id = saveInd.value;
@@ -115,8 +102,6 @@ todoAppArray = JSON.parse(mytodo);
  text.value = ""; //avoid errors
  localStorage.setItem("mytodo", JSON.stringify(todoAppArray));
  showTask();//call display function 
- 
- 
 });
 
 
